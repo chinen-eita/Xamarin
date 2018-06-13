@@ -11,11 +11,11 @@ namespace LMS.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
 
-        private string _title;
-        public string Title
+        private string _pageTitle;
+        public string PageTitle
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return _pageTitle; }
+            set { SetProperty(ref _pageTitle, value); }
         }
 
         public ViewModelBase(INavigationService navigationService)
@@ -25,22 +25,22 @@ namespace LMS.ViewModels
 
         public virtual void OnNavigatedFrom(NavigationParameters parameters)
         {
-            
+
         }
 
         public virtual void OnNavigatedTo(NavigationParameters parameters)
         {
-            
+
         }
 
         public virtual void OnNavigatingTo(NavigationParameters parameters)
         {
-            
+
         }
 
         public virtual void Destroy()
         {
-            
+
         }
     }
 }

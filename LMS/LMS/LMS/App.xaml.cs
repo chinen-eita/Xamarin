@@ -31,6 +31,7 @@ namespace LMS
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<UserListPage>();
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Prism.Commands;
+﻿using LMS.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace LMS.ViewModels
 {
@@ -13,7 +15,8 @@ namespace LMS.ViewModels
         public MainPageViewModel(INavigationService navigationService) 
             : base (navigationService)
         {
-            Title = "Main Page";
+
         }
+        
     }
 }
