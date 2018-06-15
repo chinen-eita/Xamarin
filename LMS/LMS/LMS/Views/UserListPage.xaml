@@ -3,6 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="LMS.Views.UserListPage">
-  
+             x:Class="LMS.Views.UserListPage"
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             Title="{Binding PageTitle}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add new"
+                     Icon="ic_add.png"
+                     Command="{Binding AddUserCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <ListView ItemsSource="{Binding AllUsers}"
+                  HasUnevenRows="True"
+                  BackgroundColor="#f5f5f5">
+
+            <ListView.Behaviors>
+                <behaviorsPack:SelectedItemBehavior Command="{Binding SelectedUserCommand}" PropertyPath="UserId"/>
+            </ListView.Behaviors>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid BackgroundColor="White"
+                              Margin="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackLayout Orientation="Horizontal"
+                                         Grid.Row="1"
+                                         Margin="4"
+                                         Padding="2">
+
+                                <Label Text="{Binding LastName}"
+                                       FontSize="Small" />
+
+                                <Label Text="{Binding FirstName}"
+                                       FontSize="Small" />
+                            </StackLayout>
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </ContentPage.Content>
+
 </ContentPage>

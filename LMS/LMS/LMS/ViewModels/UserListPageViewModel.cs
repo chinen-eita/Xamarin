@@ -11,28 +11,45 @@ using LMS.Models;
 using LMS.Views;
 using Prism.Navigation;
 using Xamarin.Forms;
-
+using Realms;
 
 namespace LMS.ViewModels
 {
 	public class UserListPageViewModel : ViewModelBase
     {
-        private ObservableCollection<User> _allTeams;
+        private ObservableCollection<User> _allUsers;
 
         public UserListPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            PageTitle = "All Teams";
+            PageTitle = "All Users";
 
-            //AddTeamCommand = new Command(() => { NavigationService.NavigateAsync(nameof(AddTeamPage)); });
+            AddUserCommand = new Command(() => { NavigationService.NavigateAsync(nameof(AddUserPage)); });
 
-            //SelectedTeamCommand = new Command<string>(item =>
-            //{
-            //    NavigationService.NavigateAsync(nameof(TeamDetailsPage), new NavigationParameters
-            //    {
-            //        {"TEAM_ID", item}
-            //    });
-            //});
+            SelectedUserCommand = new Command<string>(item =>
+            {
+                NavigationService.NavigateAsync(nameof(UserDetailsPage), new NavigationParameters
+                {
+                    {"TEAM_ID", item}
+                });
+            });
+
+            AllUsers = LocalDataManager.ReadLocal(realm => realm.All<User>()).AsObserveble();
+
         }
-	}
+
+        public ObservableCollection<User> AllUsers
+        {
+            get => _allUsers;
+            set => SetProperty(ref _allUsers, value);
+        }
+
+        public ICommand AddUserCommand { get; }
+        public ICommand SelectedUserCommand { get; }
+
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            AllUsers = LocalDataManager.ReadLocal(realm => realm.All<User>()).AsObserveble();
+        }
+    }
 }

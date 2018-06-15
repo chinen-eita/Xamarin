@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LMS.Views.AddUserPage"
+             Title="{Binding PageTitle}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     Icon="ic_save.png"
+                     Command="{Binding SaveUserCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="姓"
+                   Text="{Binding LastName}"
+                   Margin="4" />
+            <Entry Placeholder="名"
+                   Text="{Binding FirstName}"
+                   Margin="4" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
