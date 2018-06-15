@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LMS.Views.MainPage"
-             Title="{Binding Title}">
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             Title="{Binding PageTitle}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <StackLayout Padding="20">
+        <Button Text="ユーザー一覧"
+          Command="{Binding NavToListCommand}"/>
+        <Button Text="新規登録"
+          Command="{Binding NavToCreateCommand}"/>
+        <Button Text="更新・削除"
+          Command="{Binding NavToUpdateDeleteCommand}"/>
     </StackLayout>
 
 </ContentPage>
